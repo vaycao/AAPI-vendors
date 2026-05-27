@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAPI Vendor Spotlight</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow--one" aria-hidden="true"></div>
+    <div class="page-glow page-glow--two" aria-hidden="true"></div>
+
+    <header class="hero">
+      <p class="hero__kicker">Community Spotlight</p>
+      <h1 class="hero__title">Asian-Owned Vendors We Have Proudly Supported</h1>
+      <p class="hero__intro">
+        Every vendor here brings craft, care, and culture to our neighborhoods.
+        Browse stories, discover favorites, and celebrate the people behind each
+        business.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="filters" aria-label="Vendor filters">
+        <div class="filter-group">
+          <h2>Category</h2>
+          <div id="categoryFilters" class="pill-list"></div>
+        </div>
+        <div class="filter-group">
+          <h2>Neighborhood</h2>
+          <div id="neighborhoodFilters" class="pill-list"></div>
+        </div>
+      </section>
+
+      <section class="results" aria-live="polite">
+        <p id="statusMessage" class="status-message">Loading vendors...</p>
+        <div id="vendorGrid" class="vendor-grid"></div>
+      </section>
+    </main>
+
+    <div
+      id="vendorModal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalVendorName"
+    >
+      <div class="modal__backdrop" data-close-modal="true"></div>
+      <article class="modal__panel">
+        <button class="modal__close" data-close-modal="true" aria-label="Close details">
+          ×
+        </button>
+        <div id="modalContent"></div>
+      </article>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
