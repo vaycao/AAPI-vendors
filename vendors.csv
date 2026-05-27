@@ -1,19 +1,86 @@
-id,name,category,neighborhood,tagline,origin_story,owner_name,heritage,photo,website,instagram,date_supported,featured
-zen-garden-aromas,Zen Garden Aromas,"Health, Wellness, and Home Care","Rockville, MD",Asian-inspired fragrances for everyday serenity.,"Zen Garden Aromas is a family-owned, AAPI-owned business founded in Rockville, Maryland, by Melody and Dennis, a Taiwanese-American husband-and-wife team. 
+id,name,category,neighborhood,tagline,origin_story,owner_name,heritage,photo,website,instagram,date_supported,featured,interview_url,interview_caption
+zen-garden-aromas,Zen Garden Aromas,Home Goods,"Rockville, MD",Asian-inspired fragrances for everyday serenity.,"Zen Garden Aromas is a family-owned, AAPI-owned business founded in Rockville, Maryland, by Melody and Dennis, a Taiwanese-American husband-and-wife team. 
 
 Originally from San Jose, California, Melody is a physician trained in Internal Medicine and Rheumatology, now practicing in Maryland. After more than a decade of rigorous medical training, her days were filled with long shifts, constant handwashing, and rushing home to care for the family.
 
 In search of a creative outlet beyond medicine, she longed for a way to cultivate new passions while finding moments of peace amid the chaos of daily life while raising two young children. Drawing on her Taiwanese heritage and her upbringing in an immigrant household, Melody longed to preserve and pass down her cultural traditions to the next generation. She envisioned a line of Asian-inspired foaming hand soaps that would blend cultural tradition with everyday self-care. Meanwhile, Dennis—whose background spans culinary arts, photography, business administration, and the mortgage industry—recognized the potential in her vision and lack of authentic Asian cultural representation in the U.S. body care market. Thus, Zen Garden Aromas was launched in April 2025 from their shared desire to honor the beauty and richness of the Asian-American experience.
 
 While “Asian” is by no means a singular identity—encompassing countless languages, traditions, and histories—Zen Garden Aromas strives to handcraft innovative, authentic self-care products that provide tranquility, bring communities together, and offer meaningful sensory and cultural experiences regardless of background.
-",Melody & Dennis,Taiwanese-American,zen garden.png,https://www.zengardenaromas.com/,@zengardenaromas,2024-05-28,yes
-saigon-corner,Saigon Corner,Restaurant,Wheaton,A second-generation pho shop where the broth simmers for 18 hours.,"Linh's parents arrived in Maryland in 1982 with very little besides a recipe for pho written on the back of a photograph. They opened the original Saigon Corner in 1991 in a strip mall that no longer exists. Linh took over in 2018 after her father's retirement.
+",Melody & Dennis,Taiwanese ,zen garden.png,https://www.zengardenaromas.com/,@zengardenaromas,,yes,,
+nguyen-coffee-supply,Nguyen Coffee Supply,Food & Beverage,"New York, NY",A mission to enjoy Vietnamese coffee,"1st Gen, Vietnamese-american Woman Owned. Nguyen Coffee Supply was founded by Sahra Nguyen, a 1st generation Vietnamese American and a quintessential Millennial of the “Slash Generation”. Her multifaceted creative career includes being the award-winning documentary filmmaker behind NBC News’ “Deported”, a former restaurant owner and a 2018 Google Next Gen Leader. Nguyen is the daughter of Vietnamese refugees, who fled their country by boat after the Vietnam War, and eventually settled in Boston, MA, where she was born and raised.",Sahra,Vietnamese,Espresso_Ground_Coffee_Nguyen_Coffee_Supply_Lifestyle_View_006_15ae3745-2ff4-4177-8eb0-74c197017079.webp,https://nguyencoffeesupply.com/,,,,,
+love-letter-bakery,Love Letter Bakery,Food & Beverage,"New York, NY",,"Growing up, I was always in a kitchen. I was either in the restaurant my parents ran or at home with my mom, cooking and baking.
 
-The broth recipe hasn't changed in three decades. Linh tested updating it twice and reverted both times after her regulars staged what she calls a peaceful protest with chopsticks.""",,,,,,,
-,,,,,,,,,,,,
-"The walls hold photographs of every family who has worked there, including a wedding photo of her parents taken behind the counter in 1993.""",Linh Nguyen,Vietnamese-American,saigon-corner.jpg,https://saigoncorner.example.com,@saigoncornerdc,2024-05-02,yes,,,,,
-binh-bookshop,Binh's Books & Tea,Retail,Silver Spring,A bookshop and tea bar specializing in Southeast Asian literature in translation.,"Binh opened the shop in 2022 after a decade as a librarian. The collection focuses on contemporary fiction, poetry, and cookbooks from Vietnam, Thailand, Cambodia, Laos, and the Philippines — much of it hard to find anywhere else in the region.
+My parents immigrated from Malaysia to New York about 36 years ago, and around Lunar New Year my mom and I would spend hours making kuih kapit which is a delicate Malaysian cookie which translates to “love letter crepes” to gift to people we cared about.
 
-The back of the shop has a small tea bar with seven rotating Southeast Asian teas. Binh hosts a monthly reading group and an annual Lunar New Year poetry night that has, somehow, never had an empty seat.
+Love Letter Bakeri is my way of paying homage to my parents for to the hard work and love they built our lives on. And it’s also a love letter to the people around me.
 
-I wanted a place where the books I grew up wishing existed could finally sit on a shelf,"" Binh says.""",Binh Tran,Vietnamese-American,binh-bookshop.jpg,https://binhsbooks.example.com,@binhsbooksandtea,2024-08-21,no
+I love learning what people’s favorite desserts are! Tell me yours, and I’ll probably try my hand at making it.
+
+Love,
+ Kathleen",Kathleen,Malaysian,LoveLetter.webp,https://loveletterbakeri.com/,,,,https://www.youtube.com/watch?v=XL8KI2ftOwM,
+,Sanzo,Food & Beverage,"New York, NY",Authentic Asian flavors made with real fruit,"At Sanzo, we believe in the power of flavor to connect cultures and generations. Founded with a passion for celebrating the rich heritage of Asian flavors, our drinks bring vibrant Asian fruit flavors to modern palates—without the excess sugar. Inspired by our founder, Filipino-American Sandro Roco, and his desire to bridge cultures, Sanzo started with a simple mission: to highlight bold unique Asian flavors he loved growing up.",Sandro,Filipino,Sanzo.webp,https://drinksanzo.com/,,,,,
+,Confusion Snacks,Food & Beverage,"Los Angeles, CA",Big flavor simply made,"“As a kid of the South Asian diaspora, I wanted a snack that felt like me, not 100% American, not 100% Indian, but somewhere in the middle. That fusion market didn’t exist, so we’re here to build it, one bite at a time.”
+- Aadit, Founder
+👋🏼 Hi, I’m Aadit! I’m a kid of the Indian diaspora and I grew up confused.
+
+​Growing up, I lived at the intersection of two worlds, learning how to carry forward my Indian roots while adapting to American culture. What began as confusion between my Indian and American identities eventually blossomed into a unique fusion of the two cultures. Whether it’s accenting my western-influenced palette with traditional Indian spices or shuffling between Bollywood music and American pop, I found ways to preserve an authentic connection to my immigrant roots while embracing the cultural influences of growing up in America.
+
+As I continue to embrace that fusion, I’m excited to share it with you through products inspired by my Indian-American identity. Whether they spark a memory of home or help you discover something new, I’m excited to share them in the most authentic way I know, with a pinch of confusion!",Aadit,Indian,VarietyPack-1.webp,https://confusionsnacks.com/,,,,,
+,Oodaalolly,Food & Beverage,"Richmond, CA",Award-winning chocolate,"Hernan Lauber | Founder + Chief Chocolate Maker
+
+Hernan Lauber is a sixth-generation Swiss chocolate maker with deep Filipino roots, bridging two rich culinary heritages in his approach to chocolate making. Growing up surrounded by Switzerland’s celebrated chocolate traditions that he learned from his father, Hernan carries forward his family’s legacy while infusing it with the vibrant flavors of his Filipino heritage. His unique perspective brings together the precision of Swiss craftsmanship with the bold, tropical tastes of the Philippines, creating chocolates that are both classic and adventurous. With a commitment to quality and innovation, Hernan’s work celebrates a fusion of cultures, redefining what fine chocolate can be.",Hernan,Filipino,Oodaalolly.webp,https://oodaalolly.com/,,,,https://www.youtube.com/watch?v=BbB_xGhTrvk,
+,Bombay Eats,Food & Beverage,"Chicago, IL",Fresh. Indian. Fast,"When the wife & husband team, Falguni and Ali Dewjee, opened Bombay Wraps in 2010, they had one simple mission – to share with you the delicious, easy, and affordable street food they grew up eating in Bombay (Mumbai), India. Today this mission continues to burn bright, across 4 retail outlets and a food truck, as Bombay Eats (new brand name) is committed to serving you Fresh, Indian Food, Fast in a modern, casual and fun environment.
+
+The food philosophy continues to be focused around taking complex flavors, rich aromas, abundant variety, & delicious slow-cooked recipes – and making it easy and accessible for all of Chicago to enjoy by serving it in Wraps (Paratha or Whole Wheat Roti), Sandwich Rolls (Buttered & Toasted) and Bowls (Basmati Rice or Fresh Cut Salad). Our food is flexible and created to meet your mood be it in our restaurants, at your office, at a social gathering or in the comfort of your home. ",Falguni and Ali,Indian,6318Family_Shot_Lite.png,https://www.bombayeats.com/,,,,,
+,Yutori,Food & Beverage,"Palo Alto, CA","We invite you to slow down, gather, and savor the moment.","In Japanese, yutori (ゆとり) means “space.”
+Space to breathe.
+Space to slow down.
+Space to be present.
+
+It’s a way of moving through the world with intention — one we hope to share with you.
+Yutori is a restaurant, café, konbini, and gathering space.
+A place where food, art, design, and community come together.",Jerome,Japanese,YUTORI.png,https://www.yutori-pa.com/,,,,https://www.youtube.com/watch?v=idsGWuFgBOg,
+,Boba Tribe,Food & Beverage,"Bay Area, CA",(WikiTrivia prize),"Hello Bubblers!
+
+Our heartfelt gratitude for getting to know us better and welcome to the Boba Tribe.  
+
+The founder of Boba Tribe was born in Taiwan and grew up in Australia. The current Boba Tribe team is a Bay Area Family that loves all things Boba. From its delicious gummy texture, its variety of customizable options, its mouthwatering colors and photo ops, to its ability to connect people world wide, Boba is a way of life. Boba Tribe is our way of paying homage to this iconic beverage. 
+
+We are about Boba! Our Boba Tribe goal is to design unique Boba tea (Bubble tea) inspired Gifts and Merchandises that recreate the same joyous and happy feelings experienced when drinking Boba tea. Through our brand, we want to further help grow and connect the community of people who share the same love and passion for Boba tea.
+
+We are about sustainability TEA! Sustainable Boba tastes and feels better. As the Boba love grows we hope to do our part by promoting more sustainable Boba drinking, thus eliminating the use of single use plastic one straw at a time. It may not save the world however every big journey starts with one small step.   
+
+Seeing Boba Tea being enjoyed by people from all walks of life, cultures, ethnicity, ages and genders makes us feel proud of the Asian heritage. If you love our brand and our products, please help us share it with your friends and family and help grow the Boba Tribe. 
+
+Thank you for visiting our store and may you have a Bobalicious day!
+
+Much love from the Boba Tribe Family",,Taiwanese ,boba tribe.webp,https://www.bobatribe.com,,,,,
+,Dream Design Doodle,Art,"San Francisco, CA",(WikiTrivia prize),"Millie Kwong is a San Francisco–based artist and designer whose work captures the quiet beauty of everyday life through watercolor. Influenced by her background in interior design and a lifelong connection to the city, Millie’s art celebrates the textures, stories, and community spirit that make San Francisco so unique.
+
+​
+
+Her watercolor collection, Dream Design Doodle, began as a personal sketching practice and has since grown into a thoughtful line of postcards, greeting cards, and prints found in local shops and art fairs. Each piece reflects a balance of simplicity and California warmth, blending minimal design with heartfelt storytelling.
+
+​
+
+Through her art, Millie hopes to inspire connection — between people, places, and the moments that make everyday life meaningful. When she’s not painting in her studio, you’ll find her exploring local cafes, creating alongside her daughter, or tending to her growing collection of paper goods and watercolor projects.",Millie,Chinese,dream design.png,https://www.dreamdesigndoodle.com/,,,,,
+,Lin's Hawaiian Snacks,Food & Beverage,"Honolulu, HI",(WikiTrivia prize),"In 1982, Shin and Jim Lin immigrated to Honolulu from Taiwan to be near their family.
+
+Now, more than 20 years later, the brothers are running a thriving business selling Hawaiian and Asian snacks with outlets at the Ward Famers Market and the Aloha Stadium Swap Meet.
+
+Lin’s market commenced Aloha Stadium Swap Meet operations in 1985 selling vegetables and a line of swimming toys.
+
+The brothers have since changed their product line to become one of the favorite places in the islands for Hawaiian and Asian snacks.
+
+Crack seed, fruit, nuts, chips, cookies and more can be found at both locations.
+
+The best seller, according to Shin, is the li hing pineapple. “People love li hing pineapple” says Shin. “I was one of the first to introduce it about 17 years ago.” Shin offers samples to customers as they walk by and he guarantees their satisfaction.
+
+Locals and tourists alike enjoy this island favorite. 
+
+“I love to see the look on their faces; that look of pure enjoyment when they taste it,” says Shin. “I want the people to remember it, especially the tourists, so when they come back to Hawaii, they will come back to Lin’s Market for the li hing pineapple.”",Shin & Jim / Johnerson & Rebecca,Taiwanese ,539541237_18532170424062810_5145228132864045805_n.jpg,https://www.linsmarkethawaii.com/,,,,,
+,One Stripe Chai,Food & Beverage,"Portland, OR",(WikiTrivia prize),"I have to start by explaining my relationship with chai. I'm Indian so drinking chai is basically in my blood. I have memories with chai that most people in the US have with coffee.
+
+I remember being young and watching all the ""adults"" drink chai religiously, anxiously waiting until I was ""old enough"" to have a mug of my own. I still remember getting my first cup in a small amber mug with a matching saucer, which I used to cool the chai and slurp it up. At mosque, it was a ritual to meet by the chai stand in the courtyard where small white cups flooded the scene. We dunked our Ritz crackers in chai as we caught up on school, life, and who-was-dating-who. In college, I abandoned my chai and Ritz ritual for a new libation - coffee. Coffee was the new partner in crime through all-night study sessions and long walks across campus in the winter.
+
+Soon enough after college I was reacquainted with chai, but I still avoided ordering ""chai lattes"" at coffee shops because I always found them to be too sweet or incredibly bland. Fast forward 5 years, and I had quit my job in consulting and found myself in Portland launching a chai company to bring this South Asian beverage back to its roots. Since then, we've had the exciting opportunity to launch additional South Asian beverages, like ""It's Haldi, Doodh"" - with more to come.",Farah,Indian,one stripe.webp,https://onestripechai.com/,,,,,
