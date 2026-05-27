@@ -83,6 +83,17 @@ body {
   line-height: 1.65;
 }
 
+.hero__data-note {
+  margin: 0.7rem 0 0;
+  color: #8c674f;
+  font-size: 0.88rem;
+}
+
+.hero__data-note a {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
 .layout {
   padding-bottom: 4rem;
 }
