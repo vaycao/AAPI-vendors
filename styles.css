@@ -1,0 +1,366 @@
+:root {
+  --bg: #fff9f4;
+  --surface: #fffdf9;
+  --text: #2f1e14;
+  --muted: #715649;
+  --line: #ead7c7;
+  --accent: #d9673d;
+  --accent-soft: #ffe4d0;
+  --accent-strong: #a64524;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --shadow: 0 12px 32px rgba(108, 53, 23, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #fff6ef 0%, #fffdf9 60%);
+  position: relative;
+}
+
+.page-glow {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  filter: blur(18px);
+  z-index: -1;
+  opacity: 0.35;
+}
+
+.page-glow--one {
+  top: -90px;
+  left: -120px;
+  background: #ffc9a2;
+}
+
+.page-glow--two {
+  bottom: -120px;
+  right: -90px;
+  background: #ffe394;
+}
+
+.hero,
+.layout {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 3.25rem 0 2rem;
+}
+
+.hero__kicker {
+  margin: 0;
+  color: var(--accent-strong);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.hero__title {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.95rem, 4vw, 3.15rem);
+  line-height: 1.13;
+  max-width: 20ch;
+  letter-spacing: -0.02em;
+}
+
+.hero__intro {
+  margin: 1rem 0 0;
+  max-width: 64ch;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.layout {
+  padding-bottom: 4rem;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem 1.25rem;
+  margin-bottom: 1.35rem;
+}
+
+.filter-group {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(76, 39, 19, 0.05);
+}
+
+.filter-group h2 {
+  margin: 0 0 0.72rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.pill {
+  border: 1px solid #e9cdb9;
+  background: #fff5ec;
+  color: #724f3a;
+  padding: 0.42rem 0.78rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pill:hover {
+  border-color: #e2ab87;
+  transform: translateY(-1px);
+}
+
+.pill[aria-pressed="true"] {
+  background: linear-gradient(140deg, #ff7f50, #db5a35);
+  color: #fffaf8;
+  border-color: transparent;
+  box-shadow: 0 8px 14px rgba(183, 85, 45, 0.28);
+}
+
+.status-message {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.vendor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.1rem;
+}
+
+.vendor-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vendor-card:hover,
+.vendor-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgba(111, 55, 23, 0.2);
+}
+
+.vendor-card:focus-visible {
+  outline: 3px solid #f4b087;
+  outline-offset: 3px;
+}
+
+.vendor-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: linear-gradient(160deg, #fbd4b8, #f6e7d7);
+}
+
+.card-body {
+  padding: 0.85rem 0.95rem 1rem;
+}
+
+.card-headline {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.card-tagline {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.91rem;
+  line-height: 1.5;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.meta-chip {
+  background: #fff2e6;
+  border: 1px solid #f1d4bc;
+  border-radius: 999px;
+  padding: 0.24rem 0.6rem;
+  font-size: 0.75rem;
+  color: #7f573f;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  background: rgba(42, 24, 14, 0.82);
+  color: #ffcf9f;
+  border-radius: 999px;
+  padding: 0.24rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.photo-wrap {
+  position: relative;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(41, 24, 14, 0.56);
+}
+
+.modal__panel {
+  position: relative;
+  width: min(720px, calc(100% - 1.5rem));
+  max-height: calc(100vh - 2rem);
+  margin: 1rem auto;
+  background: #fffefa;
+  border-radius: 18px;
+  overflow: auto;
+  padding: 1.15rem;
+  box-shadow: 0 22px 44px rgba(22, 10, 4, 0.35);
+}
+
+.modal__close {
+  border: none;
+  background: #ffe2cf;
+  color: #8f4f32;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  position: sticky;
+  top: 0.2rem;
+  float: right;
+}
+
+.modal-photo {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #efdcca;
+}
+
+.modal-title {
+  margin: 0.9rem 0 0.25rem;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+
+.modal-subtitle {
+  margin: 0 0 0.8rem;
+  color: #775342;
+}
+
+.modal-story {
+  margin: 0.25rem 0 1rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 0.9rem;
+}
+
+.modal-detail {
+  background: #fff4ea;
+  border: 1px solid #f0d8c5;
+  border-radius: 10px;
+  padding: 0.65rem 0.7rem;
+}
+
+.modal-detail dt {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #845a44;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.modal-detail dd {
+  margin: 0.22rem 0 0;
+  font-weight: 600;
+}
+
+.modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.modal-links a {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+  color: #fff8f4;
+  background: #b65431;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.modal-links a:hover {
+  background: #964529;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 2.5rem;
+  }
+
+  .hero__intro {
+    font-size: 0.96rem;
+  }
+
+  .modal__panel {
+    margin: 0.75rem auto;
+    padding: 0.95rem;
+    width: calc(100% - 1rem);
+  }
+}
