@@ -408,22 +408,35 @@ body {
 .modal-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 0.6rem;
+  margin: 0.25rem 0 0.95rem;
 }
 
-.modal-links a {
+.modal-link {
   display: inline-block;
   border-radius: 999px;
-  padding: 0.45rem 0.75rem;
+  padding: 0.48rem 0.88rem;
   text-decoration: none;
   color: #fff8f4;
-  background: #b65431;
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
 }
 
-.modal-links a:hover {
-  background: #964529;
+.modal-link:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.modal-link--website {
+  background: linear-gradient(135deg, #ff7b3f, #db4a22);
+  box-shadow: 0 8px 16px rgba(198, 78, 39, 0.35);
+  font-size: 0.98rem;
+  padding: 0.56rem 1.05rem;
+}
+
+.modal-link--instagram {
+  background: #ad4e2f;
 }
 
 @media (max-width: 640px) {
