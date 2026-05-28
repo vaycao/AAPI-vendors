@@ -219,6 +219,26 @@ body {
   line-height: 1.5;
 }
 
+.card-interview-link {
+  display: inline-block;
+  margin: 0 0 0.72rem;
+  color: var(--accent-strong);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.16rem;
+}
+
+.card-interview-link:hover {
+  color: var(--accent);
+}
+
+.card-interview-link:focus-visible {
+  outline: 2px solid #f1a77f;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .card-meta {
   display: flex;
   flex-wrap: wrap;

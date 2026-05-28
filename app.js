@@ -257,11 +257,20 @@ function renderVendors() {
 }
 
 function createVendorCard(vendor) {
-  const card = document.createElement("button");
-  card.type = "button";
+  const card = document.createElement("article");
   card.className = "vendor-card";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
   card.setAttribute("aria-label", `View details for ${vendor.name}`);
-  card.addEventListener("click", () => openVendorModal(vendor, card));
+
+  const openDetails = () => openVendorModal(vendor, card);
+  card.addEventListener("click", openDetails);
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetails();
+    }
+  });
 
   const photoWrap = document.createElement("div");
   photoWrap.className = "photo-wrap";
@@ -297,6 +306,20 @@ function createVendorCard(vendor) {
     tagline.className = "card-tagline";
     tagline.textContent = vendor.tagline;
     body.appendChild(tagline);
+  }
+
+  if (vendor.interviewEmbedUrl) {
+    const interviewLink = document.createElement("a");
+    interviewLink.href = "#";
+    interviewLink.className = "card-interview-link";
+    interviewLink.textContent = "Watch Interview";
+    interviewLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openVendorModal(vendor, interviewLink);
+      scrollModalToInterview();
+    });
+    body.appendChild(interviewLink);
   }
 
   const meta = document.createElement("div");
@@ -399,6 +422,15 @@ function openVendorModal(vendor, triggerElement) {
   elements.modal.classList.add("is-open");
   elements.modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+}
+
+function scrollModalToInterview() {
+  requestAnimationFrame(() => {
+    const interviewSection = elements.modalContent.querySelector(".modal-video-section");
+    if (interviewSection instanceof HTMLElement) {
+      interviewSection.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  });
 }
 
 function closeModal() {
