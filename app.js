@@ -50,12 +50,10 @@ async function loadVendors() {
       .filter((vendor) => vendor && vendor.name)
       .sort(sortVendors);
 
-    if (state.vendors.length === 0) {
-      elements.statusMessage.textContent =
-        "No vendors found in vendors.csv yet.";
-    } else {
-      elements.statusMessage.textContent = "";
-    }
+    elements.statusMessage.textContent =
+      state.vendors.length === 0
+        ? "No vendors found in vendors.csv yet."
+        : `${state.vendors.length} vendor${state.vendors.length === 1 ? "" : "s"} shown`;
   } catch (error) {
     console.error("Unable to load vendor data:", error);
     elements.statusMessage.textContent =
@@ -79,6 +77,8 @@ function normalizeVendor(row, index) {
     "instagram",
     "date_supported",
     "featured",
+    "interview_url",
+    "interview_caption",
   ];
 
   keys.forEach((key) => {
@@ -87,10 +87,15 @@ function normalizeVendor(row, index) {
 
   vendor.id = vendor.id || `vendor-${index + 1}`;
   vendor.featured = parseFeatured(vendor.featured);
-  vendor.photoSrc = resolvePhoto(vendor.photo, vendor.name);
   vendor.websiteUrl = normalizeUrl(vendor.website, "website");
   vendor.instagramUrl = normalizeUrl(vendor.instagram, "instagram");
   vendor.dateLabel = formatDate(vendor.date_supported);
+  vendor.photoCandidates = resolvePhotoCandidates(vendor.photo, vendor.name);
+  vendor.photoFallback = fallbackPhoto(vendor.name);
+  vendor.interviewVideoId = extractYouTubeId(vendor.interview_url);
+  vendor.interviewEmbedUrl = vendor.interviewVideoId
+    ? `https://www.youtube.com/embed/${vendor.interviewVideoId}`
+    : "";
 
   return vendor;
 }
@@ -120,7 +125,7 @@ function normalizeUrl(rawValue, type) {
 }
 
 function formatDate(rawDate) {
-  if (!rawDate) return "Not specified";
+  if (!rawDate) return "";
   const parsed = new Date(rawDate);
   if (Number.isNaN(parsed.getTime())) return rawDate;
   return parsed.toLocaleDateString(undefined, {
@@ -142,15 +147,18 @@ function sortVendors(a, b) {
   return a.name.localeCompare(b.name);
 }
 
-function resolvePhoto(photoValue, vendorName) {
+function resolvePhotoCandidates(photoValue, vendorName) {
   const trimmed = String(photoValue || "").trim();
   if (!trimmed) {
-    return fallbackPhoto(vendorName);
+    return [fallbackPhoto(vendorName)];
   }
+
   if (/^(https?:\/\/|data:|\/|\.)/i.test(trimmed) || trimmed.includes("/")) {
-    return trimmed;
+    return [trimmed];
   }
-  return `images/${trimmed}`;
+
+  // Support both the intended images/ folder and existing root-level filenames.
+  return [`images/${trimmed}`, trimmed];
 }
 
 function fallbackPhoto(name) {
@@ -223,7 +231,7 @@ function renderPillGroup({ mount, selected, options, onChange }) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "pill";
-    button.textContent = option || "Uncategorized";
+    button.textContent = option;
     button.setAttribute("aria-pressed", option === selected ? "true" : "false");
     button.addEventListener("click", () => onChange(option));
     mount.appendChild(button);
@@ -267,12 +275,12 @@ function createVendorCard(vendor) {
 
   const photo = document.createElement("img");
   photo.className = "vendor-photo";
-  photo.src = vendor.photoSrc;
   photo.alt = `${vendor.name} photo`;
   photo.loading = "lazy";
-  photo.addEventListener("error", () => {
-    photo.src = fallbackPhoto(vendor.name);
+  photo.addEventListener("load", () => {
+    tuneCardImagePresentation(photo, photoWrap);
   });
+  setImageSourceWithFallback(photo, vendor.photoCandidates, vendor.photoFallback);
   photoWrap.appendChild(photo);
 
   const body = document.createElement("div");
@@ -282,75 +290,111 @@ function createVendorCard(vendor) {
   name.className = "card-headline";
   name.textContent = vendor.name;
 
-  const tagline = document.createElement("p");
-  tagline.className = "card-tagline";
-  tagline.textContent = vendor.tagline || "A local favorite worth discovering.";
+  body.append(name);
+
+  if (vendor.tagline) {
+    const tagline = document.createElement("p");
+    tagline.className = "card-tagline";
+    tagline.textContent = vendor.tagline;
+    body.appendChild(tagline);
+  }
 
   const meta = document.createElement("div");
   meta.className = "card-meta";
-  [vendor.category, vendor.neighborhood].filter(Boolean).forEach((value) => {
-    const chip = document.createElement("span");
-    chip.className = "meta-chip";
-    chip.textContent = value;
-    meta.appendChild(chip);
-  });
+  [vendor.category, vendor.neighborhood]
+    .filter(Boolean)
+    .forEach((value) => {
+      const chip = document.createElement("span");
+      chip.className = "meta-chip";
+      chip.textContent = value;
+      meta.appendChild(chip);
+    });
 
-  body.append(name, tagline, meta);
+  if (meta.childElementCount > 0) {
+    body.appendChild(meta);
+  }
+
   card.append(photoWrap, body);
   return card;
 }
 
 function openVendorModal(vendor, triggerElement) {
   lastFocusedElement = triggerElement || document.activeElement;
-  const websiteLink = vendor.websiteUrl
-    ? `<a href="${escapeHtml(vendor.websiteUrl)}" target="_blank" rel="noopener noreferrer">Website</a>`
+
+  const subtitleHtml = vendor.tagline
+    ? `<p class="modal-subtitle">${escapeHtml(vendor.tagline)}</p>`
     : "";
-  const instagramLink = vendor.instagramUrl
-    ? `<a href="${escapeHtml(vendor.instagramUrl)}" target="_blank" rel="noopener noreferrer">Instagram</a>`
+
+  const storyHtml = vendor.origin_story
+    ? `<p class="modal-story">${escapeHtml(vendor.origin_story)}</p>`
+    : "";
+
+  const detailItems = [
+    ["Owner", vendor.owner_name],
+    ["Heritage", vendor.heritage],
+    ["Category", vendor.category],
+    ["Neighborhood", vendor.neighborhood],
+    ["Date Supported", vendor.dateLabel],
+  ].filter(([, value]) => Boolean(value));
+
+  const detailsHtml =
+    detailItems.length > 0
+      ? `<dl class="modal-grid">${detailItems
+          .map(
+            ([label, value]) => `
+              <div class="modal-detail">
+                <dt>${escapeHtml(label)}</dt>
+                <dd>${escapeHtml(value)}</dd>
+              </div>`
+          )
+          .join("")}</dl>`
+      : "";
+
+  const linksHtml = [
+    vendor.websiteUrl
+      ? `<a href="${escapeHtml(vendor.websiteUrl)}" target="_blank" rel="noopener noreferrer">Website</a>`
+      : "",
+    vendor.instagramUrl
+      ? `<a href="${escapeHtml(vendor.instagramUrl)}" target="_blank" rel="noopener noreferrer">Instagram</a>`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("");
+
+  const videoCaptionHtml = vendor.interview_caption
+    ? `<p class="modal-video-caption">${escapeHtml(vendor.interview_caption)}</p>`
+    : "";
+
+  const videoHtml = vendor.interviewEmbedUrl
+    ? `<section class="modal-video-section">
+        ${videoCaptionHtml}
+        <iframe
+          class="modal-video-frame"
+          src="${escapeHtml(vendor.interviewEmbedUrl)}"
+          title="YouTube interview with ${escapeHtml(vendor.name)}"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </section>`
     : "";
 
   elements.modalContent.innerHTML = `
-    <img class="modal-photo" src="${escapeHtml(vendor.photoSrc)}" alt="${escapeHtml(
-      vendor.name
-    )} photo" />
+    <img class="modal-photo" alt="${escapeHtml(vendor.name)} photo" />
     <h2 id="modalVendorName" class="modal-title">${escapeHtml(vendor.name)}</h2>
-    <p class="modal-subtitle">${escapeHtml(
-      vendor.tagline || "Rooted in community."
-    )}</p>
-    <p class="modal-story">${escapeHtml(
-      vendor.origin_story || "Origin story coming soon."
-    )}</p>
-
-    <dl class="modal-grid">
-      <div class="modal-detail">
-        <dt>Owner</dt>
-        <dd>${escapeHtml(vendor.owner_name || "Not listed")}</dd>
-      </div>
-      <div class="modal-detail">
-        <dt>Heritage</dt>
-        <dd>${escapeHtml(vendor.heritage || "Not listed")}</dd>
-      </div>
-      <div class="modal-detail">
-        <dt>Category</dt>
-        <dd>${escapeHtml(vendor.category || "Not listed")}</dd>
-      </div>
-      <div class="modal-detail">
-        <dt>Neighborhood</dt>
-        <dd>${escapeHtml(vendor.neighborhood || "Not listed")}</dd>
-      </div>
-      <div class="modal-detail">
-        <dt>Date Supported</dt>
-        <dd>${escapeHtml(vendor.dateLabel)}</dd>
-      </div>
-    </dl>
-
-    <div class="modal-links">${websiteLink}${instagramLink}</div>
+    ${subtitleHtml}
+    ${storyHtml}
+    ${videoHtml}
+    ${detailsHtml}
+    ${linksHtml ? `<div class="modal-links">${linksHtml}</div>` : ""}
   `;
 
   const modalImage = elements.modalContent.querySelector(".modal-photo");
-  modalImage.addEventListener("error", () => {
-    modalImage.src = fallbackPhoto(vendor.name);
+  modalImage.addEventListener("load", () => {
+    tuneModalImagePresentation(modalImage);
   });
+  setImageSourceWithFallback(modalImage, vendor.photoCandidates, vendor.photoFallback);
 
   elements.modal.classList.add("is-open");
   elements.modal.setAttribute("aria-hidden", "false");
@@ -380,6 +424,88 @@ function setupModalEvents() {
       closeModal();
     }
   });
+}
+
+function extractYouTubeId(rawUrl) {
+  const input = String(rawUrl || "").trim();
+  if (!input) return "";
+
+  const maybeId = input.match(/^[A-Za-z0-9_-]{11}$/);
+  if (maybeId) return maybeId[0];
+
+  let parsed;
+  try {
+    parsed = new URL(/^https?:\/\//i.test(input) ? input : `https://${input}`);
+  } catch (error) {
+    return "";
+  }
+
+  const host = parsed.hostname.toLowerCase();
+  let id = "";
+
+  if (host === "youtu.be" || host.endsWith(".youtu.be")) {
+    id = parsed.pathname.split("/").filter(Boolean)[0] || "";
+  } else if (host.includes("youtube.com")) {
+    if (parsed.pathname === "/watch") {
+      id = parsed.searchParams.get("v") || "";
+    } else if (parsed.pathname.startsWith("/embed/")) {
+      id = parsed.pathname.split("/")[2] || "";
+    }
+  }
+
+  if (!/^[A-Za-z0-9_-]{11}$/.test(id)) {
+    return "";
+  }
+
+  return id;
+}
+
+function setImageSourceWithFallback(imageElement, candidates, fallbackSrc) {
+  const queue = [...new Set((candidates || []).filter(Boolean))];
+  let index = 0;
+
+  const loadAtIndex = () => {
+    if (index < queue.length) {
+      imageElement.src = queue[index];
+      return;
+    }
+
+    imageElement.src = fallbackSrc;
+  };
+
+  imageElement.addEventListener("error", () => {
+    index += 1;
+    loadAtIndex();
+  });
+
+  loadAtIndex();
+}
+
+function tuneCardImagePresentation(imageElement, container) {
+  const width = imageElement.naturalWidth || 0;
+  const height = imageElement.naturalHeight || 1;
+  const ratio = width / height;
+
+  container.dataset.ratio = "standard";
+  imageElement.classList.remove("vendor-photo--contain");
+
+  if (ratio < 0.9) {
+    container.dataset.ratio = "portrait";
+    imageElement.classList.add("vendor-photo--contain");
+  } else if (ratio > 1.7) {
+    container.dataset.ratio = "wide";
+  }
+}
+
+function tuneModalImagePresentation(imageElement) {
+  const width = imageElement.naturalWidth || 0;
+  const height = imageElement.naturalHeight || 1;
+  const ratio = width / height;
+
+  imageElement.classList.remove("modal-photo--contain");
+  if (ratio < 1.1) {
+    imageElement.classList.add("modal-photo--contain");
+  }
 }
 
 function escapeHtml(value) {
