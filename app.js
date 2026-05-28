@@ -375,10 +375,14 @@ function openVendorModal(vendor, triggerElement) {
 
   const linksHtml = [
     vendor.websiteUrl
-      ? `<a href="${escapeHtml(vendor.websiteUrl)}" target="_blank" rel="noopener noreferrer">Website</a>`
+      ? `<a class="modal-link modal-link--website" href="${escapeHtml(
+          vendor.websiteUrl
+        )}" target="_blank" rel="noopener noreferrer">Visit Website</a>`
       : "",
     vendor.instagramUrl
-      ? `<a href="${escapeHtml(vendor.instagramUrl)}" target="_blank" rel="noopener noreferrer">Instagram</a>`
+      ? `<a class="modal-link modal-link--instagram" href="${escapeHtml(
+          vendor.instagramUrl
+        )}" target="_blank" rel="noopener noreferrer">Instagram</a>`
       : "",
   ]
     .filter(Boolean)
@@ -407,10 +411,10 @@ function openVendorModal(vendor, triggerElement) {
     <img class="modal-photo" alt="${escapeHtml(vendor.name)} photo" />
     <h2 id="modalVendorName" class="modal-title">${escapeHtml(vendor.name)}</h2>
     ${subtitleHtml}
+    ${linksHtml ? `<div class="modal-links">${linksHtml}</div>` : ""}
     ${videoHtml}
     ${storyHtml}
     ${detailsHtml}
-    ${linksHtml ? `<div class="modal-links">${linksHtml}</div>` : ""}
   `;
 
   const modalImage = elements.modalContent.querySelector(".modal-photo");
