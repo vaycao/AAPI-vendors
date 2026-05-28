@@ -83,6 +83,17 @@ body {
   line-height: 1.65;
 }
 
+.hero__data-note {
+  margin: 0.7rem 0 0;
+  color: #8c674f;
+  font-size: 0.88rem;
+}
+
+.hero__data-note a {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
 .layout {
   padding-bottom: 4rem;
 }
@@ -181,9 +192,15 @@ body {
 .vendor-photo {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
   background: linear-gradient(160deg, #fbd4b8, #f6e7d7);
+}
+
+.vendor-photo--contain {
+  object-fit: contain;
+  padding: 0.3rem;
 }
 
 .card-body {
@@ -200,6 +217,26 @@ body {
   color: var(--muted);
   font-size: 0.91rem;
   line-height: 1.5;
+}
+
+.card-interview-link {
+  display: inline-block;
+  margin: 0 0 0.72rem;
+  color: var(--accent-strong);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.16rem;
+}
+
+.card-interview-link:hover {
+  color: var(--accent);
+}
+
+.card-interview-link:focus-visible {
+  outline: 2px solid #f1a77f;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .card-meta {
@@ -232,6 +269,16 @@ body {
 
 .photo-wrap {
   position: relative;
+  aspect-ratio: 4 / 3;
+  background: #f8ede0;
+}
+
+.photo-wrap[data-ratio="portrait"] {
+  aspect-ratio: 3 / 4;
+}
+
+.photo-wrap[data-ratio="wide"] {
+  aspect-ratio: 16 / 10;
 }
 
 .modal {
@@ -279,10 +326,16 @@ body {
 
 .modal-photo {
   width: 100%;
-  max-height: 280px;
+  max-height: 320px;
   object-fit: cover;
+  object-position: center;
   border-radius: 12px;
   border: 1px solid #efdcca;
+  background: #f7eadc;
+}
+
+.modal-photo--contain {
+  object-fit: contain;
 }
 
 .modal-title {
@@ -326,6 +379,25 @@ body {
 .modal-detail dd {
   margin: 0.22rem 0 0;
   font-weight: 600;
+}
+
+.modal-video-section {
+  margin: 0.15rem 0 1.1rem;
+}
+
+.modal-video-caption {
+  margin: 0 0 0.45rem;
+  font-size: 0.9rem;
+  color: #6f4b3a;
+  font-weight: 600;
+}
+
+.modal-video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #eed8c6;
+  border-radius: 12px;
+  background: #2e1f15;
 }
 
 .modal-links {
