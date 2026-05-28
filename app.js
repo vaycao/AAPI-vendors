@@ -312,7 +312,7 @@ function createVendorCard(vendor) {
     const interviewLink = document.createElement("a");
     interviewLink.href = "#";
     interviewLink.className = "card-interview-link";
-    interviewLink.textContent = "Watch Interview";
+    interviewLink.innerHTML = "Watch Interview <span class=\"card-interview-icon\" aria-hidden=\"true\">-&gt;</span>";
     interviewLink.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -407,8 +407,8 @@ function openVendorModal(vendor, triggerElement) {
     <img class="modal-photo" alt="${escapeHtml(vendor.name)} photo" />
     <h2 id="modalVendorName" class="modal-title">${escapeHtml(vendor.name)}</h2>
     ${subtitleHtml}
-    ${storyHtml}
     ${videoHtml}
+    ${storyHtml}
     ${detailsHtml}
     ${linksHtml ? `<div class="modal-links">${linksHtml}</div>` : ""}
   `;

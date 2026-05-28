@@ -239,6 +239,11 @@ body {
   border-radius: 4px;
 }
 
+.card-interview-icon {
+  margin-left: 0.18rem;
+  font-size: 0.9em;
+}
+
 .card-meta {
   display: flex;
   flex-wrap: wrap;
